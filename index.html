@@ -5,6 +5,8 @@
   <title>Hopian Business Analytics | Insight-Driven Operations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Hopian Business Analytics helps medical practices and small businesses streamline workflows, improve billing and claims, and build powerful analytics dashboards." />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="BEBC7312-B362-4C4E-933C-152E4898D698.png" />
 
   <style>
     :root {
@@ -20,6 +22,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -86,7 +92,7 @@
     .hero {
       background: linear-gradient(135deg, var(--navy), var(--blue));
       color: #ffffff;
-      padding: 4rem 1.5rem 3rem;
+      padding: 4rem 1.5rem 3.2rem;
     }
 
     .hero-inner {
@@ -115,26 +121,44 @@
       gap: 0.75rem;
     }
 
-    .btn-primary {
-      background: var(--teal);
-      color: #ffffff;
+    .btn-primary,
+    .btn-outline {
       padding: 0.7rem 1.3rem;
       border-radius: 999px;
-      border: none;
       font-size: 0.95rem;
       cursor: pointer;
       font-weight: 600;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 6px 16px rgba(16,185,129,0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(16,185,129,0.4);
     }
 
     .btn-outline {
       background: transparent;
-      border-radius: 999px;
       border: 1px solid #ffffff;
-      padding: 0.7rem 1.3rem;
-      font-size: 0.95rem;
-      cursor: pointer;
       color: #ffffff;
-      font-weight: 500;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 8px 20px rgba(15,23,42,0.35);
+      transform: translateY(-1px);
     }
 
     .hero-card {
@@ -143,6 +167,13 @@
       padding: 1.5rem;
       border: 1px solid rgba(255, 255, 255, 0.12);
       font-size: 0.9rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.3);
+    }
+
+    .hero-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.5);
     }
 
     section {
@@ -195,6 +226,12 @@
       border: 1px solid #E5E7EB;
       box-shadow: 0 8px 20px rgba(15,23,42,0.04);
       font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.15);
     }
 
     .card h3 {
@@ -252,6 +289,12 @@
       flex-direction: column;
       justify-content: space-between;
       font-size: 0.95rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .package:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.18);
     }
 
     .package-name {
@@ -309,7 +352,27 @@
       border-radius: 999px;
     }
 
+    /* ABOUT SECTION + WATERMARK LOGO */
+
+    .about-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-logo-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 420px;
+      height: auto;
+      opacity: 0.08;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+    }
+
     .about-grid {
+      position: relative; /* so watermark sits behind, not above */
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
       gap: 2rem;
@@ -341,6 +404,7 @@
       object-fit: cover;
       border: 2px solid #E5E7EB;
       flex-shrink: 0;
+      background: #ffffff;
     }
 
     .profile h3 {
@@ -368,6 +432,12 @@
       border: 1px solid #E5E7EB;
       padding: 1rem;
       font-size: 0.86rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(15,23,42,0.12);
     }
 
     .step-number {
@@ -426,25 +496,76 @@
       color: #E5E7EB;
     }
 
+    /* MOBILE / TABLET TWEAKS */
+
     @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-2, .packages, .about-grid, .process-steps {
-        grid-template-columns: 1fr;
-      }
-
       header {
         position: static;
       }
 
       nav ul {
-        display: none; /* simple mobile nav */
+        display: none; /* keep it simple for now */
+      }
+
+      .hero {
+        padding-top: 3rem;
+        padding-bottom: 2.5rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        margin-top: 1.25rem;
+      }
+
+      .grid-2,
+      .packages,
+      .about-grid,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 2.5rem 1.25rem;
+      }
+
+      .about-logo-bg {
+        width: 320px;
+        opacity: 0.07;
       }
 
       .profile-row {
         align-items: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 2.5rem 1.1rem 2.3rem;
+      }
+
+      .section-inner {
+        max-width: 100%;
+      }
+
+      h2.section-title {
+        font-size: 1.4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .about-logo-bg {
+        width: 260px;
+        opacity: 0.06;
+      }
+
+      .avatar {
+        width: 64px;
+        height: 64px;
       }
     }
   </style>
@@ -481,8 +602,8 @@
             improve billing and claims, and build powerful dashboards so leaders can make confident decisions.
           </p>
           <div class="hero-buttons">
-            <a href="#contact"><button class="btn-primary">Schedule a Discovery Call</button></a>
-            <a href="#packages"><button class="btn-outline">View Insight Packages</button></a>
+            <a href="#contact"><button class="btn-primary" type="button">Schedule a Discovery Call</button></a>
+            <a href="#packages"><button class="btn-outline" type="button">View Insight Packages</button></a>
           </div>
         </div>
         <div>
@@ -494,9 +615,9 @@
             </p>
             <div class="pill-list">
               <span class="pill">Workflow Optimization</span>
-              <span class="pill">Billing & Claims</span>
-              <span class="pill">Power BI & Dashboards</span>
-              <span class="pill">Payroll & Timekeeping</span>
+              <span class="pill">Billing &amp; Claims</span>
+              <span class="pill">Power BI &amp; Dashboards</span>
+              <span class="pill">Payroll &amp; Timekeeping</span>
             </div>
           </div>
         </div>
@@ -506,34 +627,34 @@
     <!-- SERVICES -->
     <section id="services">
       <div class="section-inner">
-        <h2 class="section-title">Services & Focus Areas</h2>
+        <h2 class="section-title">Services &amp; Focus Areas</h2>
         <p class="section-subtitle">
           We design leaner workflows, clean up messy data, and build analytics tools that match how your team actually works.
         </p>
 
         <div class="grid-2">
           <div class="card">
-            <h4>Operations & Workflow</h4>
+            <h4>Operations &amp; Workflow</h4>
             <h3>Make work simpler for your team.</h3>
             <p>
               We map how work really happens today, then redesign processes to remove friction, reduce handoffs, and cut down on manual rework.
             </p>
             <ul>
               <li>End-to-end workflow assessments</li>
-              <li>Intake, scheduling & front-office redesign</li>
+              <li>Intake, scheduling &amp; front-office redesign</li>
               <li>SOP creation and documentation</li>
               <li>Workload and task delegation tuning</li>
             </ul>
           </div>
 
           <div class="card">
-            <h4>Billing & Claims</h4>
+            <h4>Billing &amp; Claims</h4>
             <h3>Clean up your revenue cycle.</h3>
             <p>
               For medical practices, we help reduce denials and speed up reimbursement by improving billing workflows, documentation, and claim accuracy.
             </p>
             <ul>
-              <li>Claims lifecycle & denial analysis</li>
+              <li>Claims lifecycle &amp; denial analysis</li>
               <li>Billing workflow cleanup</li>
               <li>Coding and charge-entry review</li>
               <li>A/R cleanup strategies</li>
@@ -541,13 +662,13 @@
           </div>
 
           <div class="card">
-            <h4>Data & Dashboards</h4>
+            <h4>Data &amp; Dashboards</h4>
             <h3>Turn messy data into clear insight.</h3>
             <p>
               We extract, clean, and model your data, then build dashboards that your leadership team can actually use.
             </p>
             <ul>
-              <li>SQL-based data cleanup & reconciliation</li>
+              <li>SQL-based data cleanup &amp; reconciliation</li>
               <li>Power BI dashboards (finance, billing, productivity)</li>
               <li>PowerQuery, PowerPivot, advanced Excel automation</li>
               <li>Automated monthly/quarterly reporting</li>
@@ -555,15 +676,15 @@
           </div>
 
           <div class="card">
-            <h4>Payroll & Compliance</h4>
+            <h4>Payroll &amp; Compliance</h4>
             <h3>Reduce surprises and risk.</h3>
             <p>
               We help you understand and optimize payroll, overtime, and timekeeping, and support audit and FEMA-related compliance when it matters most.
             </p>
             <ul>
-              <li>Payroll & overtime efficiency review</li>
-              <li>Timekeeping & approval workflows</li>
-              <li>Internal audit prep & reconciliations</li>
+              <li>Payroll &amp; overtime efficiency review</li>
+              <li>Timekeeping &amp; approval workflows</li>
+              <li>Internal audit prep &amp; reconciliations</li>
               <li>FEMA reimbursement tracking dashboards</li>
             </ul>
           </div>
@@ -592,7 +713,7 @@
                 <li>1 dashboard (Power BI or Excel)</li>
                 <li>SOP updates (up to 5)</li>
                 <li>Single dataset cleanup</li>
-                <li>Summary of findings & recommendations</li>
+                <li>Summary of findings &amp; recommendations</li>
               </ul>
             </div>
             <div class="package-footer">
@@ -611,7 +732,7 @@
                 <li>Everything in Insight Starter</li>
                 <li>Billing/claims or financial workflow audit</li>
                 <li>Denial trends or variance analysis</li>
-                <li>Payroll & overtime efficiency review</li>
+                <li>Payroll &amp; overtime efficiency review</li>
                 <li>2–3 dashboards (billing, KPIs, staffing, finance)</li>
                 <li>Advanced Excel automation (reporting, reconciliation)</li>
                 <li>SOP updates (up to 10)</li>
@@ -635,11 +756,11 @@
                 <li>Full revenue cycle optimization</li>
                 <li>Financial + operational workflow redesign</li>
                 <li>Executive KPI dashboard suite (4–5 dashboards)</li>
-                <li>Multi-source data cleanup & validation</li>
+                <li>Multi-source data cleanup &amp; validation</li>
                 <li>Scheduling optimization</li>
                 <li>Optional FEMA or grant tracking dashboard</li>
                 <li>Internal resource hub (SharePoint or similar)</li>
-                <li>Change management plan & training</li>
+                <li>Change management plan &amp; training</li>
                 <li>60 days of post-go-live support</li>
               </ul>
             </div>
@@ -656,7 +777,12 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
+    <section id="about" class="about-section">
+      <img
+        src="BEBC7312-B362-4C4E-933C-152E4898D698.png"
+        alt="Hopian Business Analytics watermark logo"
+        class="about-logo-bg"
+      />
       <div class="section-inner">
         <div class="about-grid">
           <div>
