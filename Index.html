@@ -1,1 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hopian Business Analytics | Insight-Driven Operations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Hopian Business Analytics helps medical practices and small businesses streamline workflows, improve billing and claims, and build powerful analytics dashboards." />
 
+  <style>
+    :root {
+      --navy: #14213D;
+      --blue: #1E5FE0;
+      --teal: #1BB3A0;
+      --light: #F3F4F6;
+      --dark-text: #111827;
+      --body-text: #374151;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: var(--body-text);
+      background: #ffffff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #ffffff;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .brand span {
+      color: var(--teal);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #ffffff;
+      padding: 4rem 1.5rem 3rem;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3vw + 1rem, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      max-width: 32rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #ffffff;
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid #ffffff;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h2.section-title {
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      color: var(--body-text);
+      margin-bottom: 1.5rem;
+      max-width: 42rem;
+      font-size: 0.98rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .pill {
+      background: var(--light);
+      color: var(--dark-text);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid #E5E7EB;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.04);
+      font-size: 0.95rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .card h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal);
+      margin-bottom: 0.4rem;
+    }
+
+    .card ul {
+      margin-left: 1.1rem;
+      margin-top: 0.4rem;
+    }
+
+    .card ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #D1D5DB;
+      color: #4B5563;
+      background: #F9FAFB;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .package {
+      background: #ffffff;
+      border-radius: 0.9rem;
+      padding: 1.5rem 1.5rem 1.75rem;
+      border: 1px solid #E5E7EB;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 0.95rem;
+    }
+
+    .package-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .package-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .package-summary {
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .package ul {
+      margin-left: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .package ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    .package-footer {
+      font-size: 0.8rem;
+      color: #6B7280;
+      margin-top: 0.75rem;
+    }
+
+    .highlight {
+      border-color: var(--teal);
+      box-shadow: 0 14px 36px rgba(16,185,129,0.18);
+      position: relative;
+    }
+
+    .highlight::before {
+      content: "Most Popular";
+      position: absolute;
+      top: -0.75rem;
+      right: 1.2rem;
+      background: var(--teal);
+      color: #ffffff;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .about-pill {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 0.3rem;
+    }
+
+    .profile {
+      margin-bottom: 1.2rem;
+    }
+
+    .profile h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .profile h4 {
+      font-size: 0.86rem;
+      color: #6B7280;
+      margin-bottom: 0.4rem;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .step {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      border: 1px solid #E5E7EB;
+      padding: 1rem;
+      font-size: 0.86rem;
+    }
+
+    .step-number {
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light);
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-section {
+      background: var(--light);
+    }
+
+    form {
+      margin-top: 1rem;
+      max-width: 550px;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.86rem;
+      color: #374151;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.5rem;
+      border: 1px solid #D1D5DB;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+    }
+
+    footer {
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #9CA3AF;
+      text-align: center;
+      background: #0B1120;
+    }
+
+    footer span {
+      color: #E5E7EB;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2, .packages, .about-grid, .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        position: static;
+      }
+
+      nav ul {
+        display: none; /* keep it simple for now */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        H<span>B</span>A &nbsp;|&nbsp; Hopian Business Analytics
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Insight Series</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Where Operations Meet Analytics.</h1>
+          <p>
+            Hopian Business Analytics helps medical practices and small businesses streamline workflows,
+            improve billing and claims, and build powerful dashboards so leaders can make confident decisions.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact"><button class="btn-primary">Schedule a Discovery Call</button></a>
+            <a href="#packages"><button class="btn-outline">View Insight Packages</button></a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-card">
+            <strong>We fix what’s behind the numbers.</strong>
+            <p style="margin-top:0.5rem;">
+              Most teams are drowning in manual processes and unreliable reports. We combine real-world
+              operations experience with SQL, Power BI, and automation to clean up workflows and data at the same time.
+            </p>
+            <div class="pill-list">
+              <span class="pill">Workflow Optimization</span>
+              <span class="pill">Billing & Claims</span>
+              <span class="pill">Power BI & Dashboards</span>
+              <span class="pill">Payroll & Timekeeping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMS / SOLUTIONS -->
+    <section id="services">
+      <div class="section-inner">
+        <h2 class="section-title">Services & Focus Areas</h2>
+        <p class="section-subtitle">
+          We design leaner workflows, clean up messy data, and build analytics tools that match how your team actually works.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Operations & Workflow</h4>
+            <h3>Make work simpler for your team.</h3>
+            <p>
+              We map how work really happens today, then redesign processes to remove friction, reduce handoffs, and cut down on manual rework.
+            </p>
+            <ul>
+              <li>End-to-end workflow assessments</li>
+              <li>Intake, scheduling & front-office redesign</li>
+              <li>SOP creation and documentation</li>
+              <li>Workload and task delegation tuning</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Billing & Claims</h4>
+            <h3>Clean up your revenue cycle.</h3>
+            <p>
+              For medical practices, we help reduce denials and speed up reimbursement by improving billing workflows, documentation, and claim accuracy.
+            </p>
+            <ul>
+              <li>Claims lifecycle & denial analysis</li>
+              <li>Billing workflow cleanup</li>
+              <li>Coding and charge-entry review</li>
+              <li>A/R cleanup strategies</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Data & Dashboards</h4>
+            <h3>Turn messy data into clear insight.</h3>
+            <p>
+              We extract, clean, and model your data, then build dashboards that your leadership team can actually use.
+            </p>
+            <ul>
+              <li>SQL-based data cleanup & reconciliation</li>
+              <li>Power BI dashboards (finance, billing, productivity)</li>
+              <li>PowerQuery, PowerPivot, advanced Excel automation</li>
+              <li>Automated monthly/quarterly reporting</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Payroll & Compliance</h4>
+            <h3>Reduce surprises and risk.</h3>
+            <p>
+              We help you understand and optimize payroll, overtime, and timekeeping, and support audit and FEMA-related compliance when it matters most.
+            </p>
+            <ul>
+              <li>Payroll & overtime efficiency review</li>
+              <li>Timekeeping & approval workflows</li>
+              <li>Internal audit prep & reconciliations</li>
+              <li>FEMA reimbursement tracking dashboards</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section id="packages" style="background: #F9FAFB;">
+      <div class="section-inner">
+        <h2 class="section-title">Insight Series Packages</h2>
+        <p class="section-subtitle">
+          Choose the level of insight and transformation that fits your organization today, with room to grow tomorrow.
+        </p>
+
+        <div class="packages">
+          <div class="package">
+            <div>
+              <div class="package-tag">Insight Starter</div>
+              <div class="package-name">Foundation for Better Decisions</div>
+              <p class="package-summary">
+                For organizations that need a solid baseline: cleaner workflows and an initial analytics view.
+              </p>
+              <ul>
+                <li>Workflow assessment (one primary area)</li>
+                <li>1 dashboard (Power BI or Excel)</li>
+                <li>SOP updates (up to 5)</li>
+                <li>Single dataset cleanup</li>
+                <li>Summary of findings & recommendations</li>
+              </ul>
+            </div>
+            <div class="package-footer">
+              Ideal for smaller teams or first-time analytics projects.
+            </div>
+          </div>
+
+          <div class="package highlight">
+            <div>
+              <div class="package-tag">Insight Pro</div>
+              <div class="package-name">Multi-Area Performance Upgrade</div>
+              <p class="package-summary">
+                For practices and businesses ready to tackle multiple pain points and deepen reporting.
+              </p>
+              <ul>
+                <li>Everything in Insight Starter</li>
+                <li>Billing/claims or financial workflow audit</li>
+                <li>Denial trends or variance analysis</li>
+                <li>Payroll & overtime efficiency review</li>
+                <li>2–3 dashboards (billing, KPIs, staffing, finance)</li>
+                <li>Advanced Excel automation (reporting, reconciliation)</li>
+                <li>SOP updates (up to 10)</li>
+                <li>Implementation support for new processes</li>
+              </ul>
+            </div>
+            <div class="package-footer">
+              Most popular with growing practices and small-to-mid sized organizations.
+            </div>
+          </div>
+
+          <div class="package">
+            <div>
+              <div class="package-tag">Insight Elite</div>
+              <div class="package-name">End-to-End Transformation</div>
+              <p class="package-summary">
+                For high-volume or multi-location operations that need a full workflow and analytics overhaul.
+              </p>
+              <ul>
+                <li>Everything in Insight Pro</li>
+                <li>Full revenue cycle optimization</li>
+                <li>Financial + operational workflow redesign</li>
+                <li>Executive KPI dashboard suite (4–5 dashboards)</li>
+                <li>Multi-source data cleanup & validation</li>
+                <li>Scheduling optimization</li>
+                <li>Optional FEMA or grant tracking dashboard</li>
+                <li>Internal resource hub (SharePoint or similar)</li>
+                <li>Change management plan & training</li>
+                <li>60 days of post-go-live support</li>
+              </ul>
+            </div>
+            <div class="package-footer">
+              Designed for organizations committed to long-term, sustainable change.
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size:0.85rem; color:#6B7280; margin-top:1rem;">
+          Pricing ranges are customized based on scope and complexity. Book a discovery call for a tailored proposal.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-inner">
+        <div class="about-grid">
+          <div>
+            <div class="about-pill">About Hopian Business Analytics</div>
+            <h2 class="section-title">A team that understands both the work and the data.</h2>
+            <p class="section-subtitle">
+              Most consultants understand operations or analytics—but not both. We combine real-world experience in
+              accounting, finance, medical operations, and grants with deep skills in SQL, Power BI, Excel, and workflow design.
+            </p>
+            <p style="font-size:0.95rem;">
+              We don’t just hand you charts. We help you fix what’s behind the numbers so your team can work smarter,
+              not just harder.
+            </p>
+          </div>
+          <div>
+            <div class="profile">
+              <h3>Hope Breault</h3>
+              <h4>Medical Billing, Insurance Claims & Operations</h4>
+              <p>
+                Hope brings extensive experience in medical office administration, billing, and insurance claims. She specializes
+                in front-office workflows, revenue cycle cleanup, and helping teams adopt new procedures without overwhelm.
+              </p>
+            </div>
+            <div class="profile">
+              <h3>Brian Orlando-Reno</h3>
+              <h4>Project Management, Finance, SQL & Power BI</h4>
+              <p>
+                Brian has nearly 20 years of experience across accounting, finance, and operations. He turns messy, scattered data
+                into clear dashboards and tools using SQL, Power BI, PowerQuery, PowerPivot, and advanced Excel automation.
+              </p>
+            </div>
+            <div class="badges">
+              <span class="badge">Operations</span>
+              <span class="badge">Analytics</span>
+              <span class="badge">Billing & Claims</span>
+              <span class="badge">Dashboards</span>
+              <span class="badge">Project Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" style="background:#F9FAFB;">
+      <div class="section-inner">
+        <h2 class="section-title">How We Work</h2>
+        <p class="section-subtitle">
+          A simple, structured approach that keeps your team informed and involved at every step.
+        </p>
+
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Discover</h4>
+            <p>We meet with stakeholders, review workflows and reports, and define your goals and pain points.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Design</h4>
+            <p>We map improved workflows, define KPIs, and design data models and dashboards that match how you work.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Build & Implement</h4>
+            <p>We clean data, build dashboards, and support your team as new processes go live.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Optimize</h4>
+            <p>We refine based on real use and, if desired, provide ongoing support through an Insight Continuity retainer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="section-inner">
+        <h2 class="section-title">Let’s Talk</h2>
+        <p class="section-subtitle">
+          Ready to simplify your workflows and clarify your data? Share a bit about your organization and we’ll follow up
+          to schedule a discovery call.
+        </p>
+
+        <form>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="org">Organization</label>
+            <input id="org" name="org" type="text" placeholder="Your practice or company name" />
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div>
+            <label for="topic">What can we help you with?</label>
+            <textarea id="topic" name="topic" placeholder="Tell us briefly about your workflows, data, or billing challenges."></textarea>
+          </div>
+          <div>
+            <label for="contact-method">Preferred contact method</label>
+            <select id="contact-method" name="contact-method">
+              <option value="">Select...</option>
+              <option>Email</option>
+              <option>Phone</option>
+              <option>Video Call</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
+
+        <p style="font-size:0.85rem; color:#6B7280; margin-top:1rem;">
+          Prefer email or phone? Update this section with your direct contact details once you’re ready.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Hopian Business Analytics</span> &nbsp;·&nbsp; Insight Starter · Insight Pro · Insight Elite
+  </footer>
+</body>
+</html>
